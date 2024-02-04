@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="weather.css">
     <title>Weather</title>
 </head>
@@ -11,8 +14,11 @@
 <body>
     <h1>Weather </h1>
     <br><br>
+    <div class="input_class">
     <input type="text" id="cityName" placeholder="Enter City">
     <button onclick="getWeatherData()">Search</button>
+    </div>
+    
     <div id="weatherResult"></div>
 
 
@@ -23,6 +29,7 @@
             <div id="WeatherError"></div>
         </div>
     </div>
+    
     <script src="Weather.js"></script>
 </body>
 

@@ -6,7 +6,7 @@ let modal = document.getElementById("myModal");
 
 
 async function getWeatherData() {
-    const city = CityName.value;
+    const city = CityName.value.trim();
     const myapiKey = "2dd9245d15ae0c4c786a8751617d96dd";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?APPID=${myapiKey}&q=${city},IN&units=metric#`;
     fetch(apiUrl)
@@ -45,20 +45,38 @@ function displayWeatherData(data) {
     const iconUrl = `http://openweathermap.org/img/w/${weatherData.Weathericon}.png`;
 
     const cityData = `
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${weatherData.CityName}</h5>
-                        <p class="card-text">Weather Status: ${weatherData.WeatherStatus}</p>
-                        <img src="${iconUrl}" alt="Weather Icon" class="img-fluid mb-3">
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Humidity: ${weatherData.Humidity}%</li>
-                        <li class="list-group-item">Temperature: ${weatherData.Temperature} °C</li>
-                        <li class="list-group-item">Visibility: ${weatherData.Visibility} meters</li>
-                        <li class="list-group-item">Sunrise Time: ${weatherData.SunriseTime}</li>
-                        <li class="list-group-item">Sunset Time: ${weatherData.SunsetTime}</li>
-                    </ul>
-                </div>`;
+    <div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="city-name">${weatherData.CityName}</h2>
+            <img src="${iconUrl}" alt="Weather Icon" class="weather-icon">
+            <p><p class="temperature">${weatherData.Temperature} </p> °C<p>
+            <p class="weather-status">${weatherData.WeatherStatus}</p>
+            
+            
+        </div>
+
+            <ul class="weather-details">
+            <li>
+                    <i class="fas fa-tint weather-icon"></i>
+                    Humidity: ${weatherData.Humidity}%
+            </li>
+            <li>
+                    <i class="fas fa-eye weather-icon"></i>
+                    Visibility: ${weatherData.Visibility} meters
+            </li>
+            <li>
+                    <i class="fas fa-sun weather-icon"></i>
+                    Sunrise Time: ${weatherData.SunriseTime}
+            </li>
+            <li>
+                    <i class="fas fa-sunset weather-icon"></i>
+                    Sunset Time: ${weatherData.SunsetTime}
+            </li>
+            </ul>
+    </div>
+    </div>`;
+
 
     document.getElementById('weatherResult').innerHTML = cityData;
 
@@ -70,6 +88,6 @@ function resetData() {
 }
 
 function closeModal() {
-    weatherError.innerHTML ="";
+    weatherError.innerHTML = "";
     modal.style.display = "none";
 }
